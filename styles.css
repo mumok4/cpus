@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.controls {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filters select, .filters button {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    flex-grow: 1;
+}
+
+.filters button {
+    background-color: #6c757d;
+    color: white;
+    cursor: pointer;
+    border-color: #6c757d;
+}
+
+.filters button:hover {
+    background-color: #5a6268;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+#cpuTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cpuTable th, #cpuTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#cpuTable thead th {
+    background-color: #2c3e50;
+    color: #ffffff;
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+#cpuTable thead th.sortable::after {
+    content: ' \2195';
+    opacity: 0.5;
+}
+
+#cpuTable thead th.sorted-asc::after {
+    content: ' \25B2';
+    opacity: 1;
+}
+
+#cpuTable thead th.sorted-desc::after {
+    content: ' \25BC';
+    opacity: 1;
+}
+
+
+#cpuTable tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#cpuTable tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+td.cpu-manufacturer[data-manufacturer="AMD"] {
+    color: #ED1C24;
+    font-weight: bold;
+}
+td.cpu-manufacturer[data-manufacturer="Intel"] {
+    color: #0071C5;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
