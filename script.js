@@ -11,39 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let cpuData = [];
     let currentSort = { column: null, direction: 'asc' };
 
-    async function loadCPUData() {
-        try {
-            const response = await fetch('combined-cpus.csv');
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const csvText = await response.text();
-            cpuData = parseCSV(csvText);
-
-            populateFilters();
-            applyAllFiltersAndSort();
-        } catch (error) {
-            console.error("Could not load or parse CPU data:", error);
-            tableBody.innerHTML = `<tr><td colspan="11">Ошибка загрузки данных.</td></tr>`;
-        }
-    }
-
-    function parseCSV(text) {
-        const lines = text.trim().split('\n');
-        const headers = lines[0].split(',').map(h => h.trim());
-        return lines.slice(1).map(line => {
-            const values = line.split(',');
-            const obj = {};
-            headers.forEach((header, i) => {
-                const value = values[i] ? values[i].trim() : '';
-                if (!isNaN(value) && value !== '') {
-                    obj[header] = Number(value);
-                } else {
-                    obj[header] = value;
-                }
-            });
-            return obj;
-        });
-    }
-
     function populateFilters() {
         const manufacturers = [...new Set(cpuData.map(cpu => cpu.Manufacturer))];
         const platforms = [...new Set(cpuData.map(cpu => cpu.Platform))];
@@ -171,5 +138,4 @@ document.addEventListener('DOMContentLoaded', () => {
         applyAllFiltersAndSort();
     });
 
-    loadCPUData();
 });
